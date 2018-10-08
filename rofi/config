@@ -1,0 +1,12 @@
+# PYWAL
+rofi.theme: ~/.cache/wal/colors-rofi-dark.rasi
+#rofi.theme: ~/.cache/wal/colors-rofi-light.rasi
+
+
+# Settings
+rofi.show: run
+rofi.sidebar-mode: true
+rofi.modi: run,window,emoji:/home/brad/bin/rofiemoji.sh
+rofi.show-icons: true
+rofi.terminal: urxvt
+rofi.case-sensitive: false

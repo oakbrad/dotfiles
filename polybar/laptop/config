@@ -1,0 +1,310 @@
+#
+# Get colors from pywal
+#
+[colors]
+background = ${xrdb:color0:#222}
+foreground = ${xrdb:color7:#222}
+foreground-alt = ${xrdb:color8:#222}
+primary = ${xrdb:color1:#222}
+secondary = ${xrdb:color2:#222}
+alert = ${xrdb:color5:#222}
+
+#
+# Bar for iMac Moitor
+#
+[bar/laptop]
+
+bottom = false
+fixed-center = true
+
+; Dimension defined as pixel value (e.g. 35) or percentage (e.g. 50%),
+; the percentage can optionally be extended with a pixel offset like so:
+; 50%:-10, this will result in a width or height of 50% minus 10 pixels
+width = 100%
+height = 25
+
+; Offset defined as pixel value (e.g. 35) or percentage (e.g. 50%)
+; the percentage can optionally be extended with a pixel offset like so:
+; 50%:-10, this will result in an offset in the x or y direction 
+; of 50% minus 10 pixels
+;offset-x = 100
+;offset-y = 10
+
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+; Background gradient (vertical steps)
+;   background-[0-9]+ = #aarrggbb
+;background-0 = 
+
+; Value used for drawing rounded corners
+; Individual top/bottom values can be defined using:
+;   radius-{top,bottom}
+radius = 0.0
+
+; Under-/overline pixel size and argb color
+; Individual values can be defined using:
+;   {overline,underline}-size
+;   {overline,underline}-color
+line-size = 1
+line-color = #f00
+
+underline-size = 2
+
+; Values applied to all borders
+; Individual side values can be defined using:
+;   border-{left,top,right,bottom}-size
+;   border-{left,top,right,bottom}-color
+border-size = 2
+border-color = ${colors.primary} 
+border-left-size = 0
+border-right-size = 0
+border-top-size = 0
+
+; Number of spaces to add at the beginning/end of the bar
+; Individual side values can be defined using:
+;   padding-{left,right}
+padding = 4
+
+; Number of spaces to add before/after each module
+; Individual side values can be defined using:
+;   module-margin-{left,right}
+module-margin = 1
+
+; Fonts are defined using <font-name>;<vertical-offset>
+; Font names are specified using a fontconfig pattern.
+;   font-0 = NotoSans-Regular:size=8;2
+;   font-1 = MaterialIcons:size=10
+;   font-2 = Termsynu:size=8;-1
+;   font-3 = FontAwesome:size=10
+; See the Fonts wiki page for more details
+font-0 = "Noto Sans:size=10;1"
+font-1 = "FontAwesome:pixelsize=10;4"
+
+; Modules are added to one of the available blocks
+;   modules-left = cpu ram
+;   modules-center = xwindow xbacklight
+;   modules-right = ipc clock
+modules-left = i3 pulseaudio backlight
+modules-center = date
+modules-right = battery
+
+; The separator will be inserted between the output of each module
+;separator = "  |  "
+;seperator-foreground = ${colors.foreground}
+
+; Opacity value between 0.0 and 1.0 used on fade in/out
+dim-value = 0.5
+
+; Value to be used to set the WM_NAME atom
+; If the value is empty or undefined, the atom value
+; will be created from the following template: polybar-[BAR]_[MONITOR]
+; NOTE: The placeholders are not available for custom values
+wm-name =
+
+; Position of the system tray window
+; If empty or undefined, tray support will be disabled
+; NOTE: A center aligned tray will cover center aligned modules
+tray-position = right
+
+; If true, the bar will not shift its
+; contents when the tray changes
+tray-detached = false
+
+; Tray icon max size
+tray-maxsize = 16
+
+; Enable pseudo transparency
+; Will automatically be enabled if a fully transparent
+; background color is defined using `tray-background`
+tray-transparent = false
+
+; Background color for the tray container
+; By default the tray container will use the bar
+; background color.
+; Note: 32 bit alpha blending is not supported.
+tray-background = ${colors.background}
+
+; Tray offset defined as pixel value (e.g. 35) or percentage (e.g. 50%)
+;tray-offset-x = 0
+;tray-offset-y = 0
+
+; Pad the sides of each tray icon
+tray-padding = 1
+
+; Scale factor for tray clients
+tray-scale = 1.0
+
+; Restack the bar window and put it above the
+; selected window manager's root
+wm-restack = i3
+
+; Enable support for inter-process messaging
+; See the Messaging wiki page for more details.
+enable-ipc = false
+
+; Fallback click handlers that will be called if
+; there's no matching module handler found.
+click-left = 
+click-middle = 
+click-right =
+scroll-up =
+scroll-down =
+double-click-left =
+double-click-middle =
+double-click-right =
+
+; Requires polybar to be built with xcursor support (xcb-util-cursor)
+; Possible values are:
+; - default   : The default pointer as before, can also be an empty string (default)
+; - pointer   : Typically in the form of a hand
+; - ns-resize : Up and down arrows, can be used to indicate scrolling
+cursor-click = 
+cursor-scroll = 
+
+
+
+[module/i3]
+type = internal/i3
+
+; Only show workspaces defined on the same output as the bar
+;
+; Useful if you want to show monitor specific workspaces
+; on different bars
+;
+; Default: false
+pin-workspaces = true
+
+; This will split the workspace name on ':'
+; Default: false
+strip-wsnumbers = true
+
+; Sort the workspaces by index instead of the default
+; sorting that groups the workspaces by output
+; Default: false
+index-sort = true
+
+; Create click handler used to focus workspace
+; Default: true
+enable-click = false
+
+; Create scroll handlers used to cycle workspaces
+; Default: true
+enable-scroll = false
+
+; Wrap around when reaching the first/last workspace
+; Default: true
+wrapping-scroll = false
+
+; Set the scroll cycle direction 
+; Default: true
+reverse-scroll = false
+
+; Use fuzzy (partial) matching on labels when assigning 
+; icons to workspaces
+; Example: code;♚ will apply the icon to all workspaces 
+; containing 'code' in the label
+; Default: false
+fuzzy-match = true
+
+;label-separator = |
+;label-separator-padding = 0
+;label-separator-foreground = ${colors.secondary}
+
+label-focused = %name%
+label-focused-foreground = ${colors.foreground}
+label-focused-underline = ${colors.alert}
+label-focused-background = ${colors.primary}
+label-focused-padding = 4
+
+label-unfocused = %name%
+label-unfocused-foreground = ${colors.secondary}
+label-unfocused-padding = 4
+
+[module/date]
+type = internal/date
+
+; Seconds to sleep between updates
+interval = 1.0
+
+; See "http://en.cppreference.com/w/cpp/io/manip/put_time" for details on how to format the date string
+; NOTE: if you want to use syntax tags here you need to use %%{...}
+date = %H : %M
+
+; Optional time format
+time = %H : %M
+
+; if `date-alt` or `time-alt` is defined, clicking
+; the module will toggle between formats
+date-alt = %A, %B %d - %H:%M
+time-alt = %H:%M:%S
+
+[module/pulseaudio]
+type = internal/pulseaudio
+
+format-volume = [<bar-volume>]
+format-muted = <label-muted>
+label-volume = %percentage%%
+label-muted = [|-----------]
+label-muted-foreground = ${colors.secondary}
+
+bar-volume-width = 12
+bar-volume-indicator = |
+bar-volume-fill = -
+bar-volume-empty = -
+bar-volume-empty-foreground = ${colors.secondary}
+bar-volume-indicator-foreground = ${colors.primary}
+bar-volume-fill-foreground = ${colors.alert}
+
+; Sink to be used, if it exists (find using `pacmd list-sinks`, name field)
+; If not, uses default sink
+
+; Use PA_VOLUME_UI_MAX (~153%) if true, or PA_VOLUME_NORM (100%) if false
+; Default: true
+use-ui-max = true
+
+; Interval for volume increase/decrease (in percent points) (unreleased)
+; Default: 5
+interval = 5
+
+
+[module/battery]
+type = internal/battery
+
+full-at = 98
+battery = BAT0
+adapter = AC
+time-format = "%-H : %M "
+
+format-charging = <label-charging> [<bar-capacity>]
+format-discharging = <label-discharging> [<bar-capacity>]
+format-full = [<bar-capacity>]
+
+label-discharging = %time%
+label-discharging-foreground = ${colors.secondary} 
+label-charging = %percentage%%
+label-charging-foreground = ${colors.secondary}
+
+bar-capacity-width = 12
+bar-capacity-indicator = |
+bar-capacity-empty = -
+bar-capacity-fill = -
+bar-capacity-empty-foreground = ${colors.secondary}
+bar-capacity-indicator-foreground = ${colors.primary}
+bar-capacity-fill-foreground = ${colors.alert}
+
+[module/backlight]
+type = internal/xbacklight
+
+enable-scroll = false
+
+format = [<bar>]
+
+bar-width = 12
+bar-indicator = |
+bar-empty = -
+bar-fill = -
+bar-empty-foreground = ${colors.secondary}
+bar-indicator-foreground = ${colors.primary}
+bar-fill-foreground = ${colors.alert}
